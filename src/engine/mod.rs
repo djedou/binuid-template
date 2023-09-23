@@ -1,11 +1,11 @@
-use duid_app::duid_core::{
+use binuid_app::binuid_vm::{
     console::info,
-    core::router::Router
+    //core::router::Router
 };
 use std::rc::Rc;
 
 pub struct BinuidEngine {
-    pub router: Router
+    //pub router: Router
 }
 
 impl BinuidEngine {
@@ -14,7 +14,7 @@ impl BinuidEngine {
         info!("Bravo Djedou, it works from wasm!!!!!");
 
         let duid_engine = BinuidEngine {
-            router: Router::new()
+            //router: Router::new()
         };
 
         duid_engine.render_route(None);
@@ -32,7 +32,7 @@ impl BinuidEngine {
         }
     }
 
-    fn load_user_app_by_route(&self, route: &'static str) {
+    fn load_user_app_by_route(&self, _route: &'static str) {
         //duid_app::duid_core::user_app!(route);
     }
 }
