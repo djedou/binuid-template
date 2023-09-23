@@ -1,8 +1,5 @@
-mod engine;
-
-pub use self::engine::BinuidEngine;
 use wasm_bindgen::prelude::*;
-use binuid_app::binuid_vm::{init_trace, console::info};
+use binuid_app::binuid_vm::{init_trace, console::info, engine::BinuidEngine};
 
 #[wasm_bindgen]
 pub fn binuid_engine() {
