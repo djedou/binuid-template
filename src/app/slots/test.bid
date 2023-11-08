@@ -1,0 +1,69 @@
+
+use std::{
+    render::render,
+    web::{
+        subscribe::Sub, 
+        command::Cmd,
+        components::Component
+    }
+};
+
+
+pub struct SlotTestModel {
+    pub count: u8
+}
+
+impl SlotTestModel {
+    pub fn new(count: u8) -> Self {
+        SlotTestModel {
+            count: count
+        }
+    }
+}
+
+
+pub enum SlotTestMsg {
+    None,
+    Increase,
+    Decrease
+}
+
+
+pub struct SlotTest {
+    pub model: SlotTestModel
+}
+
+
+impl<MSG> Component<MSG> for SlotTest {
+    fn init() -> Self {
+        SlotTest {
+            model: SlotTestModel::new(0)
+        }
+    }
+
+    fn view(&self) -> Html {
+        <div>
+            {"slot content"}
+        </div>
+    }
+
+    fn update(&mut self, msg: MSG) -> Cmd<MSG> {
+
+        Cmd::Some(25)
+    }
+
+    fn subscribe(&self) -> Sub<MSG> {
+
+        Sub::None
+    }
+
+    fn cached(&self) -> bool {
+        false
+    }
+
+    fn toast(&self) -> Html {
+        <div>"Erro or other toast type message"</div>
+    }
+}
+
+render::<SlotTestMsg, SlotTest>(SlotTestMsg::None, SlotTest::init());

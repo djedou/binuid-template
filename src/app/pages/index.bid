@@ -1,0 +1,77 @@
+use std::{
+    render::render,
+    logs::log_std,
+    web::{
+        subscribe::Sub, 
+        command::Cmd,
+        components::Component
+    }
+};
+
+
+pub struct AppModel {
+    pub count: u8
+}
+
+impl AppModel {
+    pub fn new(value: u8) -> Self {
+        AppModel {
+            count: value
+        }
+    }
+}
+
+
+pub enum AppMsg {
+    None,
+    Increase,
+    Decrease
+}
+
+
+
+pub struct App {
+    pub model: AppModel,
+    pub value: u16
+}
+
+
+impl<MSG> Component<MSG> for App {
+    fn init() -> Self {
+        
+        /*log_std(25);*/
+        
+        App {
+            model: AppModel::new(25),
+            value: 0
+        }
+    }
+
+    fn view(&self) -> Html {
+        <div>
+            {"total:" {self.value}}
+            <binuid-slot route="slots::test::SlotTest"/>
+        </div>
+    }
+
+    fn update(&mut self, msg: MSG) -> Cmd<MSG> {
+
+        Cmd::Some(25)
+    }
+
+    fn subscribe(&self) -> Sub<MSG> {
+
+        Sub::None
+    }
+
+    fn cached(&self) -> bool {
+        false
+    }
+
+    fn toast(&self) -> Html {
+        <div>"Erro or other toast type message"</div>
+    }
+
+}
+
+render::<AppMsg, App>(AppMsg::None, App::init());
