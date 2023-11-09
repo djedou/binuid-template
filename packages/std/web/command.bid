@@ -1,0 +1,5 @@
+
+pub enum Cmd<MSG> {
+    Some(MSG),
+    None
+}

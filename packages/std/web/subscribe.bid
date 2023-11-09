@@ -1,0 +1,6 @@
+
+
+pub enum Sub<MSG> {
+    Some(MSG),
+    None
+}
