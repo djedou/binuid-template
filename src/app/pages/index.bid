@@ -49,7 +49,7 @@ impl<MSG> Component<MSG> for App {
 
     fn view(&self) -> Html {
         <div>
-            {"total:" {self.value}}
+            {"total: " {self.value}}
             <binuid-slot route="slots::test::SlotTest"/>
         </div>
     }
