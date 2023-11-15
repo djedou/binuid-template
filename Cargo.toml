@@ -14,7 +14,7 @@ name = "binuid_engine"
 
 [dependencies]
 wasm-bindgen = "0.2"
-#duid-app = {version = "0.1.0", git = "https://github.com/djedou/duid-app", branch="develop"}
+#binuid-app = {version = "0.1.0", git = "https://github.com/djedou/binuid-app"}
 binuid-app = {version = "0.1.0", path="../../../binuid-app"}
 clap = {version = "4.0", features = ["derive", "cargo"]  }
 
