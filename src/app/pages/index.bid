@@ -47,28 +47,28 @@ impl<MSG> Component<MSG> for App {
         }
     }
 
-    fn view(&self) -> Html {
+    fn view(self) -> Html {
         <div>
             {"total: " {self.value}}
             <binuid-slot route="slots::test::SlotTest"/>
         </div>
     }
 
-    fn update(&mut self, msg: MSG) -> Cmd<MSG> {
+    fn update(mut self, msg: MSG) -> Cmd<MSG> {
 
         Cmd::Some(25)
     }
 
-    fn subscribe(&self) -> Sub<MSG> {
+    fn subscribe(self) -> Sub<MSG> {
 
         Sub::None
     }
 
-    fn cached(&self) -> bool {
+    fn cached(self) -> bool {
         false
     }
 
-    fn toast(&self) -> Html {
+    fn toast(self) -> Html {
         <div>"Erro or other toast type message"</div>
     }
 

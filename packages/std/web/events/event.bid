@@ -1,0 +1,11 @@
+use std::{
+    web::events::{
+        web_event::WebEvent, 
+        mount_event::MountEvent,
+    }
+};
+
+pub enum Event {
+    WebEvent(WebEvent),
+    MountEvent(MountEvent)
+}

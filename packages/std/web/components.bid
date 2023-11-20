@@ -8,17 +8,17 @@ use std::{
 pub trait Component<MSG> {
     fn init() -> Self;
     
-    fn view(&self) -> Html;
+    fn view(self) -> Html;
     
-    fn update(&mut self, msg: MSG) -> Cmd<MSG>;
+    fn update(mut self, msg: MSG) -> Cmd<MSG>;
     
-    fn subscribe(&self) -> Sub<MSG>;
+    fn subscribe(self) -> Sub<MSG>;
     
-    fn cached(&self) -> bool {
+    fn cached(self) -> bool {
         false
     }
 
-    fn toast(&self) -> Html {
+    fn toast(self) -> Html {
         <div>"Erro message"</div>
     }
 }
