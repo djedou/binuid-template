@@ -17,3 +17,4 @@ impl<RHS: u64> Add<RHS> for u64 {}
 impl<RHS: u128> Add<RHS> for u128 {}
 impl<RHS: f32> Add<RHS> for f32 {}
 impl<RHS: f64> Add<RHS> for f64 {}
+impl<RHS: str> Add<RHS> for str {}
