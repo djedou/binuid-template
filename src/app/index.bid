@@ -1,0 +1,77 @@
+use std::{
+    logs::log_std,
+    web::{
+        subscribe::Sub, 
+        command::Cmd,
+        component::Component
+    },
+    common::{
+        default::Default,
+        from::From
+    }
+};
+use app::slots::test::{SlotTest, SlotTestModel, SlotTestMsg};
+
+#[derive(Default)]
+pub struct AppModel {
+    pub count: u8,
+    pub slot_model: SlotTestModel
+}
+
+#[derive(Default)]
+pub enum AppMsg {
+    None, 
+    Increase,
+    Decrease,
+    Slot(SlotTestMsg)
+}
+
+impl From<Cmd<SlotTestMsg>> for Cmd<AppMsg> {
+    fn from(value: Cmd<SlotTestMsg>) -> Cmd<AppMsg> {
+        match value {
+            Cmd::Some(msg) => {
+                Cmd::Some(AppMsg::Slot(msg))
+            },
+            Cmd::None => Cmd::None,
+        }
+    }
+}
+
+#[derive(Default)]
+pub struct App;
+
+impl Component for App {
+    type Model = AppModel;
+    type Msg = AppMsg;
+
+    fn view(model: Self::Model) -> Html {
+        <div>
+            {"total: " -model.count}
+            // Every Component should be placed in other Component as a Slot
+            // So we can get it from local or remote provider
+            <SlotTest 
+                /*
+                    "route" property is not needed here because we already have it from 
+                    use app::slots::test::{SlotTest, SlotTestModel, SlotTestMsg};
+                */
+                route="slots::test::SlotTest"
+                model=model.slot_model
+            />
+        </div>
+    }
+
+    fn update(model: Self::Model, msg: Self::MSG) -> Cmd<elf::Model, Self::MSG> {
+        match msg {
+            AppMsg::Slot(slot_msg) => {
+                let cmd = SlotTest::update(model.slot_model, slot_msg);
+                Cmd::<Self::MSG>::from(cmd)
+            },
+            _ => Cmd::Some(AppMsg::None),
+        }
+    }
+
+    fn subscribe(model: Self::Model) -> Sub<MSG> {
+
+        Sub::None
+    }
+}
