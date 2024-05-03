@@ -1,5 +1,4 @@
 
-
 pub struct WebEvent {
     bubbles: bool,
     cancelable: bool,

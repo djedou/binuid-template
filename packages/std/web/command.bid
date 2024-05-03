@@ -1,5 +1,5 @@
 
-pub enum Cmd<MSG> {
-    Some(MSG),
+pub enum Cmd<MDL, MSG> {
+    Some((MDL, MSG)),
     None
 }

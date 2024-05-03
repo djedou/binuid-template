@@ -1,0 +1,34 @@
+
+use std::{
+    web::{
+        subscribe::Sub, 
+        command::Cmd,
+    },
+    common::default::Default
+};
+
+pub trait Component {
+    type Model: Default;
+    type Msg: Default;
+
+    fn init() -> (Self::Model, Self::Msg) {
+        let model = Self::Model::default();
+        let msg = Self::Msg::default();
+
+        (model, msg)
+    }
+    
+    fn view(model: Self::Model) -> Html;
+    
+    fn update(model: Self::Model, msg: Self::MSG) -> Cmd<Self::Model, Self::MSG>;
+    
+    fn subscribe(model: Self::Model) -> Sub<Self::MSG>;
+    
+    fn cached() -> bool {
+        false
+    }
+
+    fn toast(self, model: Self::Model) -> Html {
+        <div>"Erro message"</div>
+    }
+}
