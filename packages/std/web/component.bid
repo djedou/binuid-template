@@ -4,12 +4,13 @@ use std::{
         subscribe::Sub, 
         command::Cmd,
     },
-    common::default::Default
+    common::{default::Default, props::Props}
 };
 
 pub trait Component {
     type Model: Default;
     type Msg: Default;
+    type Props: Props;
 
     fn init() -> (Self::Model, Self::Msg) {
         let model = Self::Model::default();
@@ -18,7 +19,7 @@ pub trait Component {
         (model, msg)
     }
     
-    fn view(model: Self::Model) -> Html;
+    fn view(model: Self::Model, props: Self::Props) -> Html;
     
     fn update(model: Self::Model, msg: Self::MSG) -> Cmd<Self::Model, Self::MSG>;
     
