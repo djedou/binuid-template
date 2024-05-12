@@ -12,11 +12,12 @@ pub trait Component {
     type Msg: Default;
     type Props: Props;
 
-    fn init() -> (Self::Model, Self::Msg) {
+    fn init() -> (Self::Model, Self::Msg, Self::Props) {
         let model = Self::Model::default();
         let msg = Self::Msg::default();
+        let props = Self::Props::default();
 
-        (model, msg)
+        (model, msg, props)
     }
     
     fn view(model: Self::Model, props: Self::Props) -> Html;
@@ -29,7 +30,7 @@ pub trait Component {
         false
     }
 
-    fn toast(self, model: Self::Model) -> Html {
-        <div>"Erro message"</div>
+    fn toast(model: Self::Model) -> Html {
+        html!(<div>"Erro message"</div>)
     }
 }
