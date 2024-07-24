@@ -1,4 +1,0 @@
-
-
-pub fn log_web<MSG>(msg: MSG) {}
-pub fn log_std<MSG>(msg: MSG) {}

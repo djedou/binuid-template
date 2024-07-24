@@ -1,3 +1,0 @@
-pub trait Props<P> {
-    fn props(self) -> P;
-}

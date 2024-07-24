@@ -1,5 +1,0 @@
-
-
-pub struct MountEvent {
-    target_binuid_id: str
-}

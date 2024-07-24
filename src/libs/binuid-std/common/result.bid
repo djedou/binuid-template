@@ -1,6 +1,0 @@
-use std::common::error::Error;
-
-pub enum Result<T, E: Error> {
-    Ok(T),
-    Err(E)
-}

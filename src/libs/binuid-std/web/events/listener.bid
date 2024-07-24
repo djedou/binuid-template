@@ -1,4 +1,0 @@
-
-pub fn listener<EVT, MSG>(event: EVT, callback: fn(evt: EVT) -> MSG) -> MSG {
-    callback(event)
-}
