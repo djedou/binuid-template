@@ -58,7 +58,7 @@ impl Component for App {
             </div>
         )
     }
-
+    
     fn update(model: Self::Model, msg: Self::MSG) -> Cmd<Self::Model, Self::MSG> {
         match msg {
             AppMsg::Increase(increase_msg) => {
